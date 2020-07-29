@@ -7,24 +7,11 @@ async function getProducts() {
     const res = await fetch('/api/Products')
     console.log(res.status)
     console.log(res.statusText)
-    // const text = await res.text()
     const products = await res.json()
-    // debugger;
     return products
   } catch (err) {
     throw err.message;
   }
-  
-  // return new Promise((resolve) => {
-  //   resolve([{
-  //     id: 1,
-  //     name: 'product'
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'product2'
-  //   }])
-  // })
 }
 
 class Products extends React.Component {
@@ -43,7 +30,7 @@ class Products extends React.Component {
   render() {
     return (
     <div>
-      {this.state.products.map(p => <div className="item">{p.name}</div>)}
+      {this.state.products.map(p => <div key={p.id} className="item">{p.name}</div>)}
     </div>
     )
   }
