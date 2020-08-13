@@ -5,8 +5,6 @@ import './products.css';
 async function getProducts() {
   try {
     const res = await fetch('/api/Products')
-    console.log(res.status)
-    console.log(res.statusText)
     const products = await res.json()
     return products
   } catch (err) {
